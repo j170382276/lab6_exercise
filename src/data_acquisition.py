@@ -49,7 +49,13 @@ def save_data(data, output_filename):
     ----
     Check out the os module for determining whether a file exists already.
     """
-    return os.path.exists(output_filename)
+    if os.path.exists(output_filename):
+        return 1
+    else:
+        with f = open(output_filename, 'wt') as f:
+            f.write(data)
+        return 0
+
 
 def verify_data(data, known_checksum):
     """
